@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import agencySearch from '@/components/agencySearch' // 直属下线代理查询
-import agencySet from '@/components/agencySet' // 直属下线代理设置
+import layouts from '@/components/layouts' // 直属下线代理查询
+import one from '@/components/one' // 直属下线代理查询
+import two from '@/components/two' // 直属下线代理设置
 Vue.use(Router)
 
 export default new Router({
@@ -14,36 +14,23 @@ export default new Router({
   {
    // 主页
    path: '/',
-   component: Home,
+   component: layouts,
    name: '代理事物',
    iconCls: 'el-icon-message',
+   redirect:'/one',
    children: [
-      {
-        path: '/agencySearch',
-        component: agencySearch,
-        name: '直属下线代理查询',
-        hidden: true
-      },
-      {
-      path: '/agencySet',
-      component: agencySet,
-      name: '直属下线代理设置'
-      }
-    ]
-  },
-  {
-   // 主页
-   path: '/',
-   component: Home,
-   name: '财务报表',
-   iconCls: 'el-icon-menu',
-   children: [
-     {
-    path: '/financialIncome',
-    component: financialIncome,
-    name: '财务收益数据报表',
-    hidden: true
+    {
+      path: '/two',
+      component: two,
+      name: '财务收益数据报表',
+      hidden: true
+    },
+    {
+      path: '/one',
+      component: one,
+      name: '财务收益数据报表',
+      hidden: true
     }
-    ]
+  ]
   }]
  })
