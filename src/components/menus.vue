@@ -1,6 +1,6 @@
 <template>
-<el-container style="height: 700px; border: 1px solid #eee">
-  <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+<el-container style="border: 1px solid #eee">
+  <el-aside width="200px" class="menus-aside" style="background-color: rgb(238, 241, 246);height:650px">
     <el-menu :default-openeds="['1', '3']">
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>导航一</template>
@@ -67,6 +67,20 @@
   
   .el-aside {
     color: #333;
+  }
+  .menus-aside::-webkit-scrollbar { 
+    width: 12px;
+    overflow:hidden
+  }/* 滚动槽 */
+  ::-webkit-scrollbar-track { 
+    border-radius: 10px;
+	  box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+	  background   : #fff;
+    }/* 滚动条滑块 */
+  ::-webkit-scrollbar-thumb { 
+    box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+	  border-radius: 10px;
+	  background   : #ededed;
   }
 </style>
 
