@@ -24,5 +24,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 0;
+  height: 100%;
+}
+html,body{
+  height: 100%;
+  overflow: hidden;
 }
 </style>
