@@ -5,29 +5,28 @@
       <el-aside width="200px">
         <menus></menus>
       </el-aside>
-      <el-container>
-        <el-header>
-          <p>Header</p>
-        </el-header>
+      <el-container class=" is-vertical">
+        <headers></headers>
         <el-main>
           <router-view>
           </router-view>
         </el-main>
-        <el-footer>
-          Footer
-        </el-footer>
+        <!-- <foot></foot> -->
       </el-container>
     </el-container>
     </section>
-  </section>
 </template>
 
 <script>
-import menus from './menus';
+import headers from './assets/headers';
+import foot from './assets/foot';
+import menus from './assets/menus';
 export default {
   name:'layouts',
   components: {
-    menus,
+    headers,
+    foot,
+    menus
   },
   computed: {
     menuOpen() {
@@ -43,17 +42,20 @@ export default {
       height:100%;
     }
   .el-header, .el-footer {
-    background-color: #B3C0D1;
     color: #333;
     text-align: center;
     line-height: 60px;
   }
-  
+  .el-container{
+    height: 100%;
+  }
   .el-aside {
     background-color: #D3DCE6;
     color: #333;
-    text-align: center;
+    /* text-align: center; */
     line-height: 200px;
+    height: 100%;
+    overflow-x: hidden;
   }
   
   .el-main {
