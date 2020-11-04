@@ -52,7 +52,7 @@ export default {
   .el-aside {
     background-color: #D3DCE6;
     color: #333;
-    text-align: center;
+    /* text-align: center; */
     line-height: 200px;
     height: 100%;
     overflow-x: hidden;

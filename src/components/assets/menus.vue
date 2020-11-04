@@ -1,11 +1,13 @@
 <template>
-<el-row class="tac">
-  <el-col>
+<el-col class="el-col-s">
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
       @open="handleOpen"
-      @close="handleClose">
+      @close="handleClose"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b">
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
@@ -38,7 +40,6 @@
       </el-menu-item>
     </el-menu>
   </el-col>
-</el-row>
 </template>
 <style>
   .el-header {
@@ -47,7 +48,10 @@
     display: flex;
     align-items: center;
   }
-  
+  .el-col-s{
+    height: 100%;
+    background-color: #fff;
+  }
   .el-aside {
     color: #333;
   }
