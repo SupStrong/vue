@@ -7,10 +7,10 @@
       </el-aside>
       <el-container class=" is-vertical">
         <headers></headers>
-        <el-main>
-          <router-view>
-          </router-view>
-        </el-main>
+          <div class="main">
+            <router-view>
+            </router-view>
+          </div>
         <!-- <foot></foot> -->
       </el-container>
     </el-container>
@@ -37,9 +37,14 @@ export default {
 </script>
 
 <style>
+  .main{
+    padding:10px 10px;
+    background:#eee;
+    height:100%;
+  }
     .container{
       width:100%;
-      height: 100%;
+      height:100%;
     }
   .el-header, .el-footer {
     color: #333;
