@@ -1,3 +1,4 @@
 export default {
-    pathName: '', // 路由
-  };
+    token:sessionStorage.getItem('token'), 
+    roles:sessionStorage.getItem('roles'),
+};
