@@ -31,7 +31,16 @@
     </el-row>
   </div>
 </template>
-
+<script>
+import { a } from '../assets/js/static'
+export default {
+  name:'one',
+  components: {
+  },
+  computed: {
+  }
+};
+</script>
 <style>
   .el-row {
     margin-top:10px;
