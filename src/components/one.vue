@@ -1,52 +1,40 @@
 <template>
-<div class="G-col-main">
-  <el-row>
-  <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
-</el-row>
-<el-row>
-  <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="12"><div class="grid-content bg-purple-light"></div></el-col>
-</el-row>
-<el-row>
-  <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="8"><div class="grid-content bg-purple-light"></div></el-col>
-  <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
-</el-row>
-<el-row>
-  <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
-  <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
-</el-row>
-<el-row>
-  <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-</el-row>
-<el-row>
-  <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-</el-row><el-row>
-  <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-</el-row>
-</div>
+  <div class="G-col-main">
+    <el-row :gutter="20">
+      <el-col :span="6"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
+      <el-col :span="6"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
+      <el-col :span="6">
+        <el-date-picker
+        v-model="value1"
+        type="daterange"
+        range-separator="至"
+        start-placeholder="开始日期"
+        end-placeholder="结束日期">
+      </el-date-picker>
+      </el-col>
+      <el-col :span="6">
+        <el-select v-model="value" placeholder="请选择">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+      </el-col>
+    </el-row>
+    <el-row class="G-M-top-10">
+      <div class="G-align-center">
+      <el-button type="primary">主要按钮</el-button>
+      <el-button type="primary">主要按钮</el-button>
+      </div>
+    </el-row>
+  </div>
 </template>
 
 <style>
   .el-row {
-    margin-bottom: 20px;
+    margin-top:10px;
   }
   .el-col {
     border-radius: 4px;
@@ -68,4 +56,7 @@
     padding: 10px 0;
     background-color: #f9fafc;
   }
+  .el-select{
+  width: 100%;
+}
 </style>

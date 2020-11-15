@@ -4,6 +4,9 @@
   height:100%;
   overflow-y: scroll;
 }
+.G-align-center{
+  text-align: center;
+}
 .G-col-main{
   background-color: #fff;
   padding: 15px;

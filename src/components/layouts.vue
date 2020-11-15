@@ -36,6 +36,6 @@ export default {
 };
 </script>
 
-<style scoped>
-@import '../assets/css/static.css';
+<style>
+@import '../assets/css/all.css';
 </style>
