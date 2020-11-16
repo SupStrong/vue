@@ -4,8 +4,8 @@
   height:100%;
   overflow-y: scroll;
 }
-.G-align-center{
-  text-align: center;
+.el-input--small{
+  width: 290px;
 }
 .G-col-main{
   background-color: #fff;

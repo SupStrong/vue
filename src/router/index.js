@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import layouts from '@/components/layouts' // 直属下线代理查询
+import layouts from '@/page/layouts' // 直属下线代理查询
+import ArticleList from '@/page/Article/list' // 直属下线代理查询
+import ArticleDetails from '@/page/Article/details' // 直属下线代理查询
 import one from '@/components/one' // 直属下线代理查询
 import two from '@/components/two' // 直属下线代理设置
 import login from '@/components/login' // 直属下线代理设置
@@ -20,20 +22,20 @@ const router = new Router({
       component:layouts,
       children:[
         {
-          path: '/one',
-          name: 'one',
+          path: '/article/list',
+          name: 'ArticlList',
           meta: {
             roles:['user']//表示只有user的权限才能够访问这个界面
           },
-          component:one
+          component:ArticleList
         },
         {
-          path: '/form',
+          path: '/article/details',
           name: 'form',
           meta: {
             roles:['user']//表示只有user的权限才能够访问这个界面
           },
-          component:form
+          component:ArticleDetails
         },
         {
           path: '/two',

@@ -6,7 +6,9 @@ import router from './router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store/index'
+import echarts from 'echarts'
 Vue.use(Element, { size: 'small' })
+Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

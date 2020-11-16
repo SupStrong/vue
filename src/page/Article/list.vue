@@ -93,8 +93,7 @@
   </div>
 </template>
 <script>
-import editors from './edit.vue';
-import { a } from '../assets/js/static'
+import editors from '../../components/edit.vue';
 export default {
   data() {
       return {
