@@ -33,7 +33,9 @@
     </div>
     <div class="G-col-main G-M-top-10">
       <el-row>
-          <el-button type="primary">创建文章</el-button>
+          <el-button type="primary">
+             <router-link to="/article/details">创建文章</router-link>
+          </el-button>
          <el-button type="success">数据详情</el-button>
       </el-row>
       <el-table
@@ -79,8 +81,23 @@
           width="100">
           <template slot-scope="scope">
             <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-            <el-button type="text" size="small">编辑</el-button>
+            <el-button type="text" size="small">
+                <router-link to="/a">编辑</router-link>
+            </el-button>
           </template>
+        </el-table-column>
+        <el-table-column property="menusstate" label="状态">
+        <template slot-scope="scope">
+         <el-switch
+            on-text ="是"
+            off-text = "否"
+            on-color="#5B7BFA"
+            off-color="#dadde5"
+            v-model="bg" 
+            @change="change(scope.$index,scope.row)"               
+        >
+        </el-switch>
+        </template>
         </el-table-column>
       </el-table>
       <el-pagination

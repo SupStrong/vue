@@ -31,7 +31,7 @@ const router = new Router({
         },
         {
           path: '/article/details',
-          name: 'form',
+          name: 'ArticlDetails',
           meta: {
             roles:['user']//表示只有user的权限才能够访问这个界面
           },
