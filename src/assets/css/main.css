@@ -1,3 +1,7 @@
+body,html{
+    margin: 0;
+    padding: 0;
+}
 .G-M-top-10{
     margin-top: 10px;
 }
@@ -36,4 +40,7 @@
 }
 .G-align-center{
     text-align: center;
+}
+.G-align-right{
+    text-align: right;
 }

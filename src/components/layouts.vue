@@ -11,7 +11,7 @@
             <router-view>
             </router-view>
           </div>
-       <foot></foot>
+       <!-- <foot></foot> -->
       </el-container>
     </el-container>
     </section>

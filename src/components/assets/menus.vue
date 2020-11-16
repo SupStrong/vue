@@ -52,7 +52,7 @@
   }
   .el-col-s{
     height: 100%;
-    background-color: #fff;
+    background-color: rgb(84, 92, 100);
   }
   .el-aside {
     color: #333;
