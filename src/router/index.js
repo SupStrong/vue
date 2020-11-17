@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import layouts from '@/page/layouts' // 直属下线代理查询
 import ArticleList from '@/page/Article/list' // 直属下线代理查询
 import ArticleDetails from '@/page/Article/details' // 直属下线代理查询
+import CircleList from '@/page/circle/list'
+import CircleDeails from '@/page/circle/details'
+import UserList from '@/page/User/list'
 import one from '@/components/one' // 直属下线代理查询
 import two from '@/components/two' // 直属下线代理设置
 import login from '@/components/login' // 直属下线代理设置
@@ -22,20 +25,29 @@ const router = new Router({
       component:layouts,
       children:[
         {
+          path: '/user/list',
+          name: 'UserList',
+          component:UserList
+        },
+        {
           path: '/article/list',
           name: 'ArticlList',
-          meta: {
-            roles:['user']//表示只有user的权限才能够访问这个界面
-          },
           component:ArticleList
         },
         {
           path: '/article/details',
           name: 'ArticlDetails',
-          meta: {
-            roles:['user']//表示只有user的权限才能够访问这个界面
-          },
           component:ArticleDetails
+        },
+        {
+          path: '/circle/list',
+          name: 'CircleList',
+          component:CircleList
+        },
+        {
+          path: '/circle/details',
+          name: 'CircleDeails',
+          component:CircleDeails
         },
         {
           path: '/two',

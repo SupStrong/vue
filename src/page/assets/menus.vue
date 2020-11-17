@@ -27,6 +27,19 @@
             <router-link :to="{path:'/article/list'}">列表</router-link>
           </el-menu-item>
         </el-submenu>
+        <el-submenu index="1-4">
+          <template slot="title">圈子列表</template>
+          <el-menu-item index="1-4-1">
+            <router-link :to="{path:'/circle/list'}">列表</router-link>
+          </el-menu-item>
+          <el-menu-item index="1-4-2">
+            <router-link :to="{path:'/circle/details'}">创建详情</router-link>
+          </el-menu-item>
+          <el-menu-item index="1-4-3">
+            <router-link :to="{path:'/user/list'}">创建详情</router-link>
+          </el-menu-item>
+        </el-submenu>
+        </el-submenu>
       </el-submenu>
       <el-menu-item index="2">
         <i class="el-icon-menu"></i>
