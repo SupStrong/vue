@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import layouts from '@/page/layouts' // 直属下线代理查询
-import ArticleList from '@/page/Article/list' // 直属下线代理查询
-import ArticleDetails from '@/page/Article/details' // 直属下线代理查询
+import ArticleTextList from '@/page/ArticleText/list' // 直属下线代理查询
+import ArticleTextDetails from '@/page/ArticleText/details' // 直属下线代理查询
 import CircleList from '@/page/circle/list'
 import CircleDeails from '@/page/circle/details'
 import UserList from '@/page/User/list'
@@ -30,23 +30,34 @@ const router = new Router({
           component:UserList
         },
         {
-          path: '/article/list',
-          name: 'ArticlList',
-          component:ArticleList
+          path: '/ArticleText/list',
+          name: '营销文章',
+          component:ArticleTextList
         },
         {
           path: '/article/details',
-          name: 'ArticlDetails',
-          component:ArticleDetails
+          name: '创建营销文章',
+          component:ArticleTextDetails
+        },
+        // ArticleVideo
+        {
+          path: '/articleVideo/list',
+          name: '营销视频',
+          component:ArticleVideoList
+        },
+        {
+          path: '/articleVideo/details',
+          name: '创建营销视频',
+          component:ArticleVideoDetails
         },
         {
           path: '/circle/list',
-          name: 'CircleList',
+          name: '圈子列表',
           component:CircleList
         },
         {
           path: '/circle/details',
-          name: 'CircleDeails',
+          name: '创建圈子',
           component:CircleDeails
         },
         {
