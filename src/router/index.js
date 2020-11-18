@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import layouts from '@/page/layouts' // 直属下线代理查询
-import ArticleList from '@/page/Article/list' // 直属下线代理查询
-import ArticleDetails from '@/page/Article/details' // 直属下线代理查询
+import ArticleTextList from '@/page/ArticleText/list' // 直属下线代理查询
+import ArticleTextDetails from '@/page/ArticleText/details' // 直属下线代理查询
+import CircleList from '@/page/circle/list'
+import CircleDeails from '@/page/circle/details'
+import UserList from '@/page/User/list'
 import one from '@/components/one' // 直属下线代理查询
 import two from '@/components/two' // 直属下线代理设置
 import login from '@/components/login' // 直属下线代理设置
@@ -22,20 +25,40 @@ const router = new Router({
       component:layouts,
       children:[
         {
-          path: '/article/list',
-          name: 'ArticlList',
-          meta: {
-            roles:['user']//表示只有user的权限才能够访问这个界面
-          },
-          component:ArticleList
+          path: '/user/list',
+          name: 'UserList',
+          component:UserList
+        },
+        {
+          path: '/ArticleText/list',
+          name: '营销文章',
+          component:ArticleTextList
         },
         {
           path: '/article/details',
-          name: 'ArticlDetails',
-          meta: {
-            roles:['user']//表示只有user的权限才能够访问这个界面
-          },
-          component:ArticleDetails
+          name: '创建营销文章',
+          component:ArticleTextDetails
+        },
+        // ArticleVideo
+        {
+          path: '/articleVideo/list',
+          name: '营销视频',
+          component:ArticleVideoList
+        },
+        {
+          path: '/articleVideo/details',
+          name: '创建营销视频',
+          component:ArticleVideoDetails
+        },
+        {
+          path: '/circle/list',
+          name: '圈子列表',
+          component:CircleList
+        },
+        {
+          path: '/circle/details',
+          name: '创建圈子',
+          component:CircleDeails
         },
         {
           path: '/two',
