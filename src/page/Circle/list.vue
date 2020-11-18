@@ -33,9 +33,7 @@
     </div>
     <div class="G-col-main G-M-top-10">
       <el-row>
-          <el-button type="primary">
-             <router-link to="/article/details">创建文章</router-link>
-          </el-button>
+          <el-button type="primary"><router-link :to="{path:'/articleText/details'}">创建文章</router-link></el-button>
          <el-button type="success">数据详情</el-button>
       </el-row>
       <el-table
@@ -46,34 +44,69 @@
         style="width: 100%">
         <el-table-column
           fixed
-          prop="date"
-          label="日期"
+          prop="name"
+          label="名称"
           width="150">
         </el-table-column>
         <el-table-column
-          prop="name"
-          label="姓名"
-          width="120">
+          fixed
+          prop="grade"
+          label="濒危等级"
+          width="150">
         </el-table-column>
         <el-table-column
-          prop="province"
-          label="省份"
-          width="120">
+          fixed
+          prop="alias"
+          label="别名"
+          width="150">
         </el-table-column>
         <el-table-column
-          prop="city"
-          label="市区"
-          width="120">
+          fixed
+          prop="subject"
+          label="学科"
+          width="150">
         </el-table-column>
         <el-table-column
-          prop="address"
-          label="地址"
-          width="300">
+          fixed
+          prop="origin"
+          label="产地"
+          width="150">
         </el-table-column>
         <el-table-column
-          prop="zip"
-          label="邮编"
-          width="120">
+          fixed
+          prop="distributionarea"
+          label="分布区域"
+          width="150">
+        </el-table-column>
+        <el-table-column
+          fixed
+          prop="features"
+          label="体态特征"
+          width="150">
+        </el-table-column>
+        <el-table-column
+          fixed
+          prop="catalog"
+          label="目"
+          width="150">
+        </el-table-column>
+        <el-table-column
+          fixed
+          prop="extinctionTime"
+          label="灭绝时间"
+          width="150">
+        </el-table-column>
+         <el-table-column
+          fixed
+          prop="reproductionMode"
+          label="繁殖方式"
+          width="150">
+        </el-table-column>
+        <el-table-column
+          fixed
+          prop="ProtectionOrganize"
+          label="保护组织"
+          width="150">
         </el-table-column>
         <el-table-column
           fixed="right"
@@ -81,23 +114,8 @@
           width="100">
           <template slot-scope="scope">
             <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-            <el-button type="text" size="small">
-                <router-link to="/a">编辑</router-link>
-            </el-button>
+            <el-button type="text" size="small">编辑</el-button>
           </template>
-        </el-table-column>
-        <el-table-column property="menusstate" label="状态">
-        <template slot-scope="scope">
-         <el-switch
-            on-text ="是"
-            off-text = "否"
-            on-color="#5B7BFA"
-            off-color="#dadde5"
-            v-model="bg" 
-            @change="change(scope.$index,scope.row)"               
-        >
-        </el-switch>
-        </template>
         </el-table-column>
       </el-table>
       <el-pagination
@@ -126,54 +144,26 @@ export default {
           desc: ''
         },
         tableData: [{
-          date: '2016-05-03',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-02',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+          id:'',
+          name:'大熊猫',
+          grade:'保护级别',
+          alias:'别名',
+          subject:'学科',
+          origin:'起源 产地',
+          catalog:'目录',
+          images:[],
+          behavior:'行为特征',
+          features:'体态特征',
+          distributionarea:'分布区域',
+          environment:'栖息环境',
+          value:'主要价值',
+          extinctionTime:'灭绝时间',
+          reproductionMode:'繁殖方式',
+          PopulationStatus:'种群现状',
+          ProtectionOrganize:'保护组织',
+          movies:[{
+
+          }]
         }]
       }
     },

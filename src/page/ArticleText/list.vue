@@ -33,7 +33,7 @@
     </div>
     <div class="G-col-main G-M-top-10">
       <el-row>
-          <el-button type="primary">创建文章</el-button>
+          <el-button type="primary"><router-link :to="{path:'/articleText/details'}">创建文章</router-link></el-button>
          <el-button type="success">数据详情</el-button>
       </el-row>
       <el-table

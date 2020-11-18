@@ -1,11 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import layouts from '@/page/layouts' // 直属下线代理查询
+// 营销文章
 import ArticleTextList from '@/page/ArticleText/list' // 直属下线代理查询
 import ArticleTextDetails from '@/page/ArticleText/details' // 直属下线代理查询
-import CircleList from '@/page/circle/list'
-import CircleDeails from '@/page/circle/details'
+// 营销视频
+import ArticleVideoList from '@/page/ArticleVideo/list' // 直属下线代理查询
+import ArticleVideoDetails from '@/page/ArticleVideo/details' // 直属下线代理查询
+import CircleList from '@/page/Circle/list'
+import CircleDetails from '@/page/Circle/details'
+// 用户
 import UserList from '@/page/User/list'
+// 保护机构
+import OrganizationList from '@/page/Organization/list'
+import OrganizationDetails from '@/page/Organization/details'
 import one from '@/components/one' // 直属下线代理查询
 import two from '@/components/two' // 直属下线代理设置
 import login from '@/components/login' // 直属下线代理设置
@@ -17,7 +25,8 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: layouts
+      component: layouts,
+      redirect:'/articleText/list',
     },
     {
       path: '/layouts',
@@ -29,17 +38,18 @@ const router = new Router({
           name: 'UserList',
           component:UserList
         },
+        // ArticleText 营销文章
         {
-          path: '/ArticleText/list',
+          path: '/articleText/list',
           name: '营销文章',
           component:ArticleTextList
         },
         {
-          path: '/article/details',
+          path: '/articleText/details',
           name: '创建营销文章',
           component:ArticleTextDetails
         },
-        // ArticleVideo
+        // ArticleVideo 营销视频
         {
           path: '/articleVideo/list',
           name: '营销视频',
@@ -50,6 +60,7 @@ const router = new Router({
           name: '创建营销视频',
           component:ArticleVideoDetails
         },
+        // 圈子 Circle
         {
           path: '/circle/list',
           name: '圈子列表',
@@ -58,16 +69,19 @@ const router = new Router({
         {
           path: '/circle/details',
           name: '创建圈子',
-          component:CircleDeails
+          component:CircleDetails
+        },
+        // 机构 Organization
+        {
+          path: '/organization/list',
+          name: '保护机构列表',
+          component:OrganizationList
         },
         {
-          path: '/two',
-          name: 'two',
-          meta: {
-            roles:['admin']
-          },
-          component:two
-        }
+          path: '/organization/details',
+          name: '创建保护机构',
+          component:OrganizationDetails
+        },
       ]
     },
     {
