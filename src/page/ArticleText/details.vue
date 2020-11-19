@@ -1,8 +1,8 @@
 <template>
     <div class="G-col-main">
       <el-form ref="form" :model="form" label-width="80px">
-        <el-form-item label="活动名称">
-          <el-input v-model="form.name"></el-input>
+        <el-form-item label="文章标题">
+          <el-input v-model="form.title"></el-input>
         </el-form-item>
         <el-form-item label="活动区域">
           <el-select v-model="form.region" placeholder="请选择活动区域">
