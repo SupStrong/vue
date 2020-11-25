@@ -33,47 +33,69 @@
     </div>
     <div class="G-col-main G-M-top-10">
       <el-row>
-          <el-button type="primary">
-             <router-link to="/article/details">创建文章</router-link>
-          </el-button>
+          <el-button type="primary"><router-link :to="{path:'/articleText/details'}">创建文章</router-link></el-button>
          <el-button type="success">数据详情</el-button>
       </el-row>
       <el-table
         class="G-M-top-15"
         :data="tableData"
         border
+        fit="true"
         height="600px"
         style="width: 100%">
         <el-table-column
           fixed
-          prop="date"
-          label="日期"
-          width="150">
+          prop="id"
+          label="文章id"
+          width="180">
         </el-table-column>
         <el-table-column
-          prop="name"
-          label="姓名"
-          width="120">
+          fixed
+          prop="title"
+          label="标题"
+          width="180">
         </el-table-column>
         <el-table-column
-          prop="province"
-          label="省份"
-          width="120">
+          fixed
+          prop="create_date"
+          label="创建时间"
+          width="180">
         </el-table-column>
         <el-table-column
-          prop="city"
-          label="市区"
-          width="120">
+          fixed
+          prop="author"
+          label="作者"
+          width="180">
         </el-table-column>
         <el-table-column
-          prop="address"
-          label="地址"
-          width="300">
+          fixed
+          prop="browse"
+          label="浏览人数"
+          width="180">
         </el-table-column>
         <el-table-column
-          prop="zip"
-          label="邮编"
-          width="120">
+          fixed
+          prop="praise"
+          label="点赞人数"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          fixed
+          prop="collection"
+          label="收藏人数"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          fixed
+          prop="group"
+          label="分组"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          fixed
+          prop="tags"
+          label="标签"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed="right"
@@ -81,23 +103,8 @@
           width="100">
           <template slot-scope="scope">
             <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-            <el-button type="text" size="small">
-                <router-link to="/a">编辑</router-link>
-            </el-button>
+            <el-button type="text" size="small">编辑</el-button>
           </template>
-        </el-table-column>
-        <el-table-column property="menusstate" label="状态">
-        <template slot-scope="scope">
-         <el-switch
-            on-text ="是"
-            off-text = "否"
-            on-color="#5B7BFA"
-            off-color="#dadde5"
-            v-model="bg" 
-            @change="change(scope.$index,scope.row)"               
-        >
-        </el-switch>
-        </template>
         </el-table-column>
       </el-table>
       <el-pagination
@@ -126,54 +133,16 @@ export default {
           desc: ''
         },
         tableData: [{
-          date: '2016-05-03',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-02',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+          id:'id',
+          title:'标题',
+          create_date:'创建时间',
+          author:'作者',
+          browse:'浏览人数',
+          praise:'点赞人数',
+          collection:'收藏人数',
+          group:'分组',
+          relation:'关联',
+          tags:['1','2','3']
         }]
       }
     },

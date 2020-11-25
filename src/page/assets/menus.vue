@@ -22,12 +22,12 @@
           <el-menu-item index="1-3">选项3</el-menu-item>
         </el-menu-item-group>
         <el-submenu index="1-4">
-          <template slot="title">文章列表</template>
+          <template slot="title">营销菜单</template>
           <el-menu-item index="1-4-1">
-            <router-link :to="{path:'/articleText/list'}">列表</router-link>
+            <router-link :to="{path:'/articleText/list'}">营销文章</router-link>
           </el-menu-item>
           <el-menu-item index="1-4-2">
-            <router-link :to="{path:'/articleText/details'}">创建文章</router-link>
+            <router-link :to="{path:'/articleVideo/list'}">营销视频</router-link>
           </el-menu-item>
         </el-submenu>
         <el-submenu index="1-5">

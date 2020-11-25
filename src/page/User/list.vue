@@ -144,26 +144,16 @@ export default {
           desc: ''
         },
         tableData: [{
-          id:'',
-          name:'大熊猫',
-          grade:'保护级别',
-          alias:'别名',
-          subject:'学科',
-          origin:'起源 产地',
-          catalog:'目录',
-          images:[],
-          behavior:'行为特征',
-          features:'体态特征',
-          distributionarea:'分布区域',
-          environment:'栖息环境',
-          value:'主要价值',
-          extinctionTime:'灭绝时间',
-          reproductionMode:'繁殖方式',
-          PopulationStatus:'种群现状',
-          ProtectionOrganize:'保护组织',
-          movies:[{
-
-          }]
+          user_id:'用户id',
+          username:'刘晨',
+          openid:'openid',
+          unid:'unid',
+          create_date:'创建时间',
+          fabulous:'首页获赞数',
+          mobild:'手机号',
+          images:'头像',
+          sex:'性别',
+          details:'个人简介'
         }]
       }
     },

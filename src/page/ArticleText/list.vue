@@ -40,73 +40,62 @@
         class="G-M-top-15"
         :data="tableData"
         border
+        fit="true"
         height="600px"
         style="width: 100%">
         <el-table-column
           fixed
-          prop="name"
-          label="名称"
-          width="150">
+          prop="id"
+          label="文章id"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed
-          prop="grade"
-          label="濒危等级"
-          width="150">
+          prop="title"
+          label="标题"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed
-          prop="alias"
-          label="别名"
-          width="150">
+          prop="create_date"
+          label="创建时间"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed
-          prop="subject"
-          label="学科"
-          width="150">
+          prop="author"
+          label="作者"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed
-          prop="origin"
-          label="产地"
-          width="150">
+          prop="browse"
+          label="浏览人数"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed
-          prop="distributionarea"
-          label="分布区域"
-          width="150">
+          prop="praise"
+          label="点赞人数"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed
-          prop="features"
-          label="体态特征"
-          width="150">
+          prop="collection"
+          label="收藏人数"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed
-          prop="catalog"
-          label="目"
-          width="150">
+          prop="group"
+          label="分组"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed
-          prop="extinctionTime"
-          label="灭绝时间"
-          width="150">
-        </el-table-column>
-         <el-table-column
-          fixed
-          prop="reproductionMode"
-          label="繁殖方式"
-          width="150">
-        </el-table-column>
-        <el-table-column
-          fixed
-          prop="ProtectionOrganize"
-          label="保护组织"
-          width="150">
+          prop="tags"
+          label="标签"
+          width="180">
         </el-table-column>
         <el-table-column
           fixed="right"
@@ -144,26 +133,16 @@ export default {
           desc: ''
         },
         tableData: [{
-          id:'',
-          name:'大熊猫',
-          grade:'保护级别',
-          alias:'别名',
-          subject:'学科',
-          origin:'起源 产地',
-          catalog:'目录',
-          images:[],
-          behavior:'行为特征',
-          features:'体态特征',
-          distributionarea:'分布区域',
-          environment:'栖息环境',
-          value:'主要价值',
-          extinctionTime:'灭绝时间',
-          reproductionMode:'繁殖方式',
-          PopulationStatus:'种群现状',
-          ProtectionOrganize:'保护组织',
-          movies:[{
-
-          }]
+          id:'id',
+          title:'标题',
+          create_date:'创建时间',
+          author:'作者',
+          browse:'浏览人数',
+          praise:'点赞人数',
+          collection:'收藏人数',
+          group:'分组',
+          relation:'关联',
+          tags:['1','2','3']
         }]
       }
     },
