@@ -4,9 +4,6 @@
   height:100%;
   overflow-y: scroll;
 }
-.el-input--small{
-  width: 290px;
-}
 .G-col-main{
   background-color: #fff;
   padding: 15px;

@@ -2,33 +2,12 @@
   <div>
     <div class="G-col-main">
       <el-row :gutter="20">
-        <el-col :span="6"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
-        <el-col :span="6"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
-        <el-col :span="6">
-          <!-- <el-date-picker
-          v-model="value1"
-          type="daterange"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期">
-        </el-date-picker> -->
+        <el-col :span="4"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
+        <el-col :span="4"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
+        <el-col :span="4">
+          <el-button type="primary">主要按钮</el-button>
+          <el-button type="primary">主要按钮</el-button>
         </el-col>
-        <el-col :span="6">
-          <!-- <el-select v-model="value" placeholder="请选择">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select> -->
-        </el-col>
-      </el-row>
-      <el-row class="G-M-top-15">
-        <div class="G-align-center">
-        <el-button type="primary">主要按钮</el-button>
-        <el-button type="primary">主要按钮</el-button>
-        </div>
       </el-row>
     </div>
     <div class="G-col-main G-M-top-10">
@@ -40,65 +19,62 @@
         class="G-M-top-15"
         :data="tableData"
         border
-        fit="true"
         height="600px"
         style="width: 100%">
         <el-table-column
-          fixed
           prop="id"
           label="文章id"
-          width="180">
+          width="100">
         </el-table-column>
         <el-table-column
-          fixed
           prop="title"
-          label="标题"
-          width="180">
+          label="标题">
         </el-table-column>
         <el-table-column
-          fixed
           prop="create_date"
-          label="创建时间"
-          width="180">
+          label="创建时间">
         </el-table-column>
         <el-table-column
-          fixed
           prop="author"
-          label="作者"
-          width="180">
+          label="作者">
         </el-table-column>
         <el-table-column
-          fixed
           prop="browse"
-          label="浏览人数"
-          width="180">
+          label="浏览人数">
         </el-table-column>
         <el-table-column
-          fixed
           prop="praise"
-          label="点赞人数"
-          width="180">
+          label="点赞人数">
         </el-table-column>
         <el-table-column
-          fixed
           prop="collection"
-          label="收藏人数"
-          width="180">
+          label="收藏人数">
         </el-table-column>
         <el-table-column
-          fixed
           prop="group"
-          label="分组"
-          width="180">
+          label="分组">
         </el-table-column>
         <el-table-column
-          fixed
           prop="tags"
-          label="标签"
-          width="180">
+          label="标签">
+        </el-table-column>
+        
+        <el-table-column
+          prop="status"
+          label="状态">
+          <template slot-scope="scope">
+            <el-switch
+              v-model="scope.row.status"
+              active-color="#13ce66"
+              active-value="true"
+              inactive-value="false"
+              inactive-color="#999"
+              @change="changeSwitch(scope.row)"
+              >
+            </el-switch>
+          </template>
         </el-table-column>
         <el-table-column
-          fixed="right"
           label="操作"
           width="100">
           <template slot-scope="scope">
@@ -137,10 +113,11 @@ export default {
           title:'标题',
           create_date:'创建时间',
           author:'作者',
-          browse:'浏览人数',
+          browse:'浏览人数浏览人数浏览人数浏览人数浏览人数',
           praise:'点赞人数',
           collection:'收藏人数',
           group:'分组',
+          status:"true",
           relation:'关联',
           tags:['1','2','3']
         }]
@@ -153,6 +130,9 @@ export default {
   mounted(){
   },
   methods:{
+    changeSwitch(row){
+      console.log(row);
+    }
   },
   computed: {
   }
