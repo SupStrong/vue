@@ -5,6 +5,13 @@
           <el-input v-model="form.title"></el-input>
         </el-form-item>
         <el-form-item label="活动区域">
+          <el-select v-model="form.author" placeholder="请选择活动区域">
+            <el-option label="小汪" value="小汪"></el-option>
+            <el-option label="小咪" value="小咪"></el-option>
+            <el-option label="小猪" value="小猪"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="活动区域">
           <el-select v-model="form.region" placeholder="请选择活动区域">
             <el-option label="区域一" value="shanghai"></el-option>
             <el-option label="区域二" value="beijing"></el-option>
@@ -49,14 +56,16 @@
     data() {
       return {
         form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
+          id:'id',
+          title:'标题',
+          author:'作者',
+          create_date:'创建时间',
+          browse:'浏览人数',
+          praise:'点赞人数',
+          collection:'收藏人数',
+          group:'分组',
+          relation:'关联',
+          tags:['1','2','3']
         }
       }
     },
