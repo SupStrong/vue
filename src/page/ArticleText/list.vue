@@ -140,7 +140,7 @@ export default {
 </script>
 <style>
   .el-row {
-    margin-top:10px;
+    /* margin-top:10px; */
   }
   .el-col {
     border-radius: 4px;
