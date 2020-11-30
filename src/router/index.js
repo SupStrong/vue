@@ -20,6 +20,63 @@ import login from '@/components/login' // 直属下线代理设置
 import error from '@/components/404' // 直属下线代理设置
 import form from '@/components/form' // 直属下线代理设置
 Vue.use(Router)
+// 营销文章
+let article = [
+    // ArticleText 营销文章
+    {
+      path: '/articleText/list',
+      name: '营销文章',
+      component:ArticleTextList
+    },
+    {
+      path: '/articleText/details',
+      name: '创建营销文章',
+      component:ArticleTextDetails
+    },
+    // ArticleVideo 营销视频
+    {
+      path: '/articleVideo/list',
+      name: '营销视频',
+      component:ArticleVideoList
+    },
+    {
+      path: '/articleVideo/details',
+      name: '创建营销视频',
+      component:ArticleVideoDetails
+    }
+],
+circle = [
+  // 圈子 Circle
+  {
+    path: '/circle/list',
+    name: '圈子列表',
+    component:CircleList
+  },
+  {
+    path: '/circle/details',
+    name: '创建圈子',
+    component:CircleDetails
+  },
+],
+Organization = [
+  {
+    path: '/organization/list',
+    name: '保护机构列表',
+    component:OrganizationList
+  },
+  {
+    path: '/organization/details',
+    name: '创建保护机构',
+    component:OrganizationDetails
+  }
+],
+userList = [
+  {
+    path: '/user/list',
+    name: 'UserList',
+    component:UserList
+  }
+];
 const router = new Router({
   routes: [
     {
@@ -33,55 +90,14 @@ const router = new Router({
       name: 'layouts',
       component:layouts,
       children:[
-        {
-          path: '/user/list',
-          name: 'UserList',
-          component:UserList
-        },
-        // ArticleText 营销文章
-        {
-          path: '/articleText/list',
-          name: '营销文章',
-          component:ArticleTextList
-        },
-        {
-          path: '/articleText/details',
-          name: '创建营销文章',
-          component:ArticleTextDetails
-        },
-        // ArticleVideo 营销视频
-        {
-          path: '/articleVideo/list',
-          name: '营销视频',
-          component:ArticleVideoList
-        },
-        {
-          path: '/articleVideo/details',
-          name: '创建营销视频',
-          component:ArticleVideoDetails
-        },
-        // 圈子 Circle
-        {
-          path: '/circle/list',
-          name: '圈子列表',
-          component:CircleList
-        },
-        {
-          path: '/circle/details',
-          name: '创建圈子',
-          component:CircleDetails
-        },
-        // 机构 Organization
-        {
-          path: '/organization/list',
-          name: '保护机构列表',
-          component:OrganizationList
-        },
-        {
-          path: '/organization/details',
-          name: '创建保护机构',
-          component:OrganizationDetails
-        },
+        // 用户列表
+        ...userList,
+        // 营销系列
+        ...article,
+        // 圈子
+        ...circle,
+        // 保护机构
+        ...Organization
       ]
     },
     {

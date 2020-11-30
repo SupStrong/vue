@@ -78,7 +78,6 @@
           label="操作"
           width="100">
           <template slot-scope="scope">
-            <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
             <el-button type="text" size="small">编辑</el-button>
           </template>
         </el-table-column>
@@ -140,7 +139,7 @@ export default {
 </script>
 <style>
   .el-row {
-    margin-top:10px;
+    /* margin-top:10px; */
   }
   .el-col {
     border-radius: 4px;

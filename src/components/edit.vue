@@ -1,59 +1,60 @@
 <template>
   <div>
-    <div class="editor"></div>
-    <button v-on:click="getContent">查看内容</button>
+  <quill-editor v-model="text"  :options="quillConfigData" ref="myQuillEditor" @change="onEditorChange($event)">
+  </quill-editor>
   </div>
 </template>
 
 <script>
-import Quill from 'quill'
-import 'quill/dist/quill.snow.css'
+import {quillEditor, Quill} from 'vue-quill-editor'
+import {container, ImageExtend, QuillWatch} from 'quill-image-extend-module'
+import "quill/dist/quill.core.css"
+import "quill/dist/quill.snow.css"
+import "quill/dist/quill.bubble.css"
+Quill.register('modules/ImageExtend', ImageExtend)
 export default {
   name: 'editor',
   props: {
     value: Object
   },
+  components:{
+    quillEditor
+  },
   data() {
     return {
-      quill:null,
-      options: {
-        theme: 'snow',
-        modules: {
-            toolbar: [
-              ['bold', 'italic', 'underline', 'strike'],
-              ['blockquote', 'code-block'],
-              [{ 'header': 1 }, { 'header': 2 }],
-              [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-              [{ 'script': 'sub' }, { 'script': 'super' }],
-              [{ 'indent': '-1' }, { 'indent': '+1' }],
-              [{ 'direction': 'rtl' }],
-              [{ 'size': ['small', false, 'large', 'huge'] }],
-              [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-              [{ 'color': [] }, { 'background': [] }],
-              [{ 'font': [] }],
-              [{ 'align': [] }],
-              ['clean'],
-              ['link', 'image', 'video']
-            ]
-          },
-          placeholder: 'Insert text here ...'
-      }
+      quillConfigData: {
+        	placeholder: '请输入哦',
+	        theme: 'snow', // 主题
+          modules: {
+            ImageExtend: {
+                loading: true, //是否显示上传加载
+                name: 'file', //设置上传参数名
+                headers: (xhr)=>{
+                },
+                action: "/backend/upload", //设置上传文件请求路径
+                response: (res) => { //这里返回的你上传之后的图片地址
+                    return res.data
+                }
+            },
+            toolbar: {
+                container: container,
+                handlers: {
+                    'image': function () {
+                        QuillWatch.emit(this.quill.id)
+                    }
+                }
+            }
+          }
+	    }
     }
   },
   mounted() {
-    let dom = this.$el.querySelector('.editor')
-    this.quill = new Quill(dom, this.options);
-    this.quill.setContents(this.value)
-    this.quill.on('text-change', () => {
-      this.$emit('input', this.quill.getContents())
-    });
   },
   methods:{
   //直接打印出富文本内容
-     getContent(){
-          const html = document.querySelector('.editor').children[0].innerHTML
-            console.log(html)
-      },
+  onEditorChange(e){
+    console.log(e);
+  }
   }
 }
 </script>
