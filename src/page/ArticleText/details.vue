@@ -26,16 +26,8 @@
             <el-time-picker placeholder="选择时间" v-model="form.date2"></el-time-picker>
           </el-col>
         </el-form-item>
-        <el-form-item label="视频上传" prop="Video">
-          <!-- action必选参数, 上传的地址 -->
-            <el-upload class="avatar-uploader el-upload--text" action="/aa"  list-type="picture-card" :show-file-list="false" :on-success="handleVideoSuccess" :before-upload="beforeUploadVideo" :on-progress="uploadVideoProcess">
-                <video v-if="videoForm.Video !='' && videoFlag == false" :src="videoForm.Video" class="avatar" controls="controls">您的浏览器不支持视频播放</video>
-                <i class="el-icon-plus"></i>
-            </el-upload>
-            <P class="text">请保证视频格式正确，且不超过10M</P>
-        </el-form-item>
         <el-form-item label="营销类型">
-         <el-radio-group v-model="radio">
+         <el-radio-group v-model="form.type" @change="tabType($event)">
           <el-radio :label="1">文章</el-radio>
           <el-radio :label="2">视频</el-radio>
         </el-radio-group>
@@ -57,8 +49,16 @@
             <el-option label="风味肉食" value="5"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="详情">
+        <el-form-item label="详情" v-if="form.type == 1">
           <editors @input="change($event)"></editors>
+        </el-form-item>
+        <el-form-item label="视频上传" prop="Video" v-else>
+          <!-- action必选参数, 上传的地址 -->
+            <el-upload class="avatar-uploader el-upload--text" action="/aa"  list-type="picture-card" :show-file-list="false" :on-success="handleVideoSuccess" :before-upload="beforeUploadVideo" :on-progress="uploadVideoProcess">
+                <video v-if="videoForm.Video !='' && videoFlag == false" :src="videoForm.Video" class="avatar" controls="controls">您的浏览器不支持视频播放</video>
+                <i class="el-icon-plus"></i>
+            </el-upload>
+            <P class="text">请保证视频格式正确，且不超过10M</P>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">立即创建</el-button>
@@ -88,7 +88,7 @@ import editors from '../../components/edit.vue';
           date1: '',
           date2: '',
           delivery: false,
-          type: [],
+          type: 1,
           resource: '',
           desc: ''
         }

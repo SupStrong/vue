@@ -27,6 +27,11 @@
           width="100">
         </el-table-column>
         <el-table-column
+          prop="type"
+          label="类型"
+          width="100">
+        </el-table-column>
+        <el-table-column
           prop="title"
           label="标题">
         </el-table-column>
@@ -116,6 +121,7 @@ export default {
           praise:'点赞人数',
           collection:'收藏人数',
           group:'分组',
+          type:'类型',
           status:"true",
           relation:'关联',
           tags:['1','2','3']
