@@ -54,7 +54,7 @@
         </el-form-item>
         <el-form-item label="视频上传" prop="Video" v-else>
           <!-- action必选参数, 上传的地址 -->
-            <el-upload class="avatar-uploader el-upload--text" action="/aa"  list-type="picture-card" :show-file-list="false" :on-success="handleVideoSuccess" :before-upload="beforeUploadVideo" :on-progress="uploadVideoProcess">
+            <el-upload class="avatar-uploader el-upload--text" :action="coke" list-type="picture-card" :show-file-list="false" :on-success="handleVideoSuccess" :before-upload="beforeUploadVideo" :on-progress="uploadVideoProcess">
                 <video v-if="videoForm.Video !='' && videoFlag == false" :src="videoForm.Video" class="avatar" controls="controls">您的浏览器不支持视频播放</video>
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -78,6 +78,7 @@ import editors from '../../components/edit.vue';
           videoUploadId:"",
           video:""
         },
+        coke:'',
         form: {
           title: '',
           create_date: '',
@@ -93,6 +94,9 @@ import editors from '../../components/edit.vue';
           desc: ''
         }
       }
+    },
+    mounted(){
+      this.coke = "/api/upload/video?_token=" + this.$cookies.get('csrfToken');
     },
     methods: {
       change(e){
