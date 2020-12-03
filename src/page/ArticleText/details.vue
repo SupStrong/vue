@@ -5,7 +5,7 @@
           <el-input  v-model="form.title"></el-input>
         </el-form-item>
         <el-form-item label="作者">
-          <el-select v-model="form.region" placeholder="请选择作者">
+          <el-select v-model="form.author" placeholder="请选择作者">
             <el-option label="小猪" value="小猪"></el-option>
             <el-option label="小狗" value="小狗"></el-option>
           </el-select>
@@ -76,34 +76,33 @@ import editors from '../../components/edit.vue';
         videoFlag:true,
         videoForm:{
           videoUploadId:"",
-          video:""
+          video:''
         },
-        coke:'',
         form: {
           title: '',
-          create_date: '',
+          author:'',
           group:'',
-          status:'',
-          textarea:'',
-          tags:[],
-          date1: '',
-          date2: '',
-          delivery: false,
+          date1:'',
+          date2:'',
           type: 1,
-          resource: '',
-          desc: ''
+          status:'',
+          tags:[],
+          textarea:'',
         }
       }
     },
     mounted(){
-      // this.coke = "/api/upload/video?_token=" + this.$cookies.get('csrfToken');
     },
     methods: {
       change(e){
           this.form.textarea = e;
       },
       onSubmit() {
-        console.log(this.form.textarea,'submit!');
+        console.log(this.form);
+        this.$post('/api/articles',this.form)
+        .then((response) => {
+          console.log(response)
+        })
       },
       beforeUploadVideo(file) {
         const isLt10M = file.size / 1024 / 1024  < 10;
