@@ -9,7 +9,6 @@ axios.defaults.baseURL ='';
 axios.interceptors.request.use(
   config => {
     config.data = qs.stringify(config.data);
-    config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     return config;
   },
   error => {
@@ -65,11 +64,7 @@ export function fetch(url,params={}){
 
  export function post(url,data = {}){
    return new Promise((resolve,reject) => {
-     axios.post(url,data,{
-        headers: {
-            'Content-Type': 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8'
-        }
-     })
+     axios.post(url,data)
           .then(response => {
             resolve(response.data);
           },err => {
@@ -113,3 +108,5 @@ export function put(url,data = {}){
          })
   })
 }
+
+
