@@ -112,7 +112,7 @@ import editors from '../../components/edit.vue';
               this.form = response.data;
             }
           })
-      },
+      },Lc19990724  
       onSubmit() {
         let currentId = this.$route.params.id;
         currentId != 0 ?  this.funEditData(currentId) : this.funCreateData();
