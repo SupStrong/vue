@@ -33,7 +33,10 @@
         </el-radio-group>
         </el-form-item>
         <el-form-item label="状态">
-          <el-switch v-model="form.status"></el-switch>
+          <el-switch 
+            v-model="form.status"
+            active-color="#13ce66"
+          ></el-switch>
         </el-form-item>
         <el-form-item label="标签">
           <el-checkbox v-model="checked" value="1">备选项</el-checkbox>
@@ -85,20 +88,42 @@ import editors from '../../components/edit.vue';
           date1:'',
           date2:'',
           type: 1,
-          status:'',
+          status:false,
           tags:[],
           textarea:'',
         }
       }
     },
     mounted(){
+      let id = this.$route.params.id;
+      if(!id){
+        this.editGetData(id);
+      }
     },
     methods: {
       change(e){
           this.form.textarea = e;
       },
+      // 编辑 获取数据
+      editGetData(id){
+          this.$fetch(`/api/articles/${id}`)
+          .then((response) => {
+            if(response.status){
+              this.form = response.data;
+            }
+          })
+      },
       onSubmit() {
-        console.log(this.form);
+        let currentId = this.$route.params.id;
+        currentId != 0 ?  this.funEditData(currentId) : this.funCreateData();
+      },
+      funEditData(currentId){
+        this.$put(`/api/articles/${currentId}`,this.form)
+        .then((response) => {
+          console.log(response)
+        })
+      },
+      funCreateData(){
         this.$post('/api/articles',this.form)
         .then((response) => {
           console.log(response)

@@ -29,7 +29,7 @@ let article = [
       component:ArticleTextList
     },
     {
-      path: '/articleText/details',
+      path: '/articleText/details/:id',
       name: '创建营销文章',
       component:ArticleTextDetails
     },
