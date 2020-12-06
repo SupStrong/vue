@@ -84,6 +84,7 @@
           <template slot-scope="scope">
             <el-button type="text" size="small">
             <router-link :to="{path:`/articleText/details/${scope.row.id}`}">编辑</router-link>
+            <span @click="deleteText(scope.row.id)">删除</span>
             </el-button>
           </template>
         </el-table-column>
@@ -143,6 +144,16 @@ export default {
           let {status,message} = response;
           if(status){
              this.$message(message);
+          }
+      })
+    },
+    deleteText(c_id){
+      this.$del(`/api/articles/${c_id}`)
+        .then((response) => {
+          let {status,message} = response;
+          if(status){
+             this.$message(message);
+             this.tableData = this.tableData.filter(item => item.id !== c_id)
           }
       })
     },

@@ -65,7 +65,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">立即创建</el-button>
-          <el-button><router-link to="/article/list">返回</router-link></el-button>
+          <el-button><router-link to="/articleText/list">返回</router-link></el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -96,7 +96,7 @@ import editors from '../../components/edit.vue';
     },
     mounted(){
       let id = this.$route.params.id;
-      if(!id){
+      if(id != 0){
         this.editGetData(id);
       }
     },
@@ -112,7 +112,7 @@ import editors from '../../components/edit.vue';
               this.form = response.data;
             }
           })
-      },Lc19990724  
+      },
       onSubmit() {
         let currentId = this.$route.params.id;
         currentId != 0 ?  this.funEditData(currentId) : this.funCreateData();
@@ -120,13 +120,21 @@ import editors from '../../components/edit.vue';
       funEditData(currentId){
         this.$put(`/api/articles/${currentId}`,this.form)
         .then((response) => {
-          console.log(response)
+          let {status,message} = response;
+          if(status){
+            this.$message(message);
+            this.routerPath();
+          }
         })
       },
       funCreateData(){
         this.$post('/api/articles',this.form)
         .then((response) => {
-          console.log(response)
+          let {status,message} = response;
+          if(status){
+            this.$message(message);
+            this.routerPath();
+          }
         })
       },
       beforeUploadVideo(file) {
@@ -155,6 +163,12 @@ import editors from '../../components/edit.vue';
               this.$message.error('视频上传失败，请重新上传！');
           }
       },
+      routerPath(){
+        this.$router.push({
+          path: '/articleText/list', 
+          query: {}
+        });
+      }
     },
     components:{
       editors
