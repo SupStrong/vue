@@ -1,6 +1,6 @@
 import axios from 'axios';
 import cookie from 'js-cookie'
-import qs from 'qs'
+import qs from 'qs
 axios.defaults.timeout = 5000;
 axios.defaults.baseURL ='';
 
