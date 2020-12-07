@@ -12,7 +12,7 @@
     </div>
     <div class="G-col-main G-M-top-10">
       <el-row>
-          <el-button type="primary"><router-link :to="{path:'/articleText/details'}">创建文章</router-link></el-button>
+          <el-button type="primary"><router-link :to="{path:'/articleText/details/0'}">创建文章</router-link></el-button>
          <el-button type="success">数据详情</el-button>
       </el-row>
       <el-table
@@ -65,7 +65,6 @@
         </el-table-column>
         
         <el-table-column
-          prop="status"
           label="状态">
           <template slot-scope="scope">
             <el-switch
@@ -83,21 +82,20 @@
           label="操作"
           width="100">
           <template slot-scope="scope">
-            <el-button type="text" size="small">编辑</el-button>
+            <el-button type="text" size="small">
+            <router-link :to="{path:`/articleText/details/${scope.row.id}`}">编辑</router-link>
+            <span @click="deleteText(scope.row.id)">删除</span>
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
-      <el-pagination
-        background
-        class="G-M-top-15 G-align-right"
-        layout="prev, pager, next"
-        :total="1000">
-      </el-pagination>
+      <page :all="count" :page="page" @CurrentPage="getCurrentPage"></page>
     </div>
   </div>
 </template>
 <script>
 import editors from '../../components/edit.vue';
+import page from '../../components/page.vue';
 export default {
   data() {
       return {
@@ -112,6 +110,8 @@ export default {
           resource: '',
           desc: ''
         },
+        page:"1",
+        limit:"20",
         tableData: [{
           id:'id',
           title:'标题',
@@ -122,7 +122,7 @@ export default {
           collection:'收藏人数',
           group:'分组',
           type:'类型',
-          status:"true",
+          status:"1",
           relation:'关联',
           tags:['1','2','3']
         }]
@@ -130,13 +130,47 @@ export default {
     },
   name:'one',
   components: {
-    editors
+    editors,
+    page
   },
   mounted(){
+    this.getData();
   },
   methods:{
     changeSwitch(row){
-      console.log(row);
+      let switchId = row.id;
+      this.$patch(`/api/articles/${switchId}`,{status:row.status})
+        .then((response) => {
+          let {status,message} = response;
+          if(status){
+             this.$message(message);
+          }
+      })
+    },
+    deleteText(c_id){
+      this.$del(`/api/articles/${c_id}`)
+        .then((response) => {
+          let {status,message} = response;
+          if(status){
+             this.$message(message);
+             this.tableData = this.tableData.filter(item => item.id !== c_id)
+          }
+      })
+    },
+    getData(){
+      let params = {
+        page:this.page,
+        limit:this.limit
+      }
+      this.$fetch('/api/articles',params)
+        .then((response) => {
+          this.count = response.count;
+          this.tableData = response.rows;
+      })
+    },
+    getCurrentPage(val){
+      this.page = val;
+      this.getData();
     }
   },
   computed: {

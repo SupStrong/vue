@@ -33,7 +33,10 @@
         </el-radio-group>
         </el-form-item>
         <el-form-item label="状态">
-          <el-switch v-model="form.status"></el-switch>
+          <el-switch 
+            v-model="form.status"
+            active-color="#13ce66"
+          ></el-switch>
         </el-form-item>
         <el-form-item label="标签">
           <el-checkbox v-model="checked" value="1">备选项</el-checkbox>
@@ -62,7 +65,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">立即创建</el-button>
-          <el-button><router-link to="/article/list">返回</router-link></el-button>
+          <el-button><router-link to="/articleText/list">返回</router-link></el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -85,23 +88,53 @@ import editors from '../../components/edit.vue';
           date1:'',
           date2:'',
           type: 1,
-          status:'',
+          status:false,
           tags:[],
           textarea:'',
         }
       }
     },
     mounted(){
+      let id = this.$route.params.id;
+      if(id != 0){
+        this.editGetData(id);
+      }
     },
     methods: {
       change(e){
           this.form.textarea = e;
       },
+      // 编辑 获取数据
+      editGetData(id){
+          this.$fetch(`/api/articles/${id}`)
+          .then((response) => {
+            if(response.status){
+              this.form = response.data;
+            }
+          })
+      },
       onSubmit() {
-        console.log(this.form);
+        let currentId = this.$route.params.id;
+        currentId != 0 ?  this.funEditData(currentId) : this.funCreateData();
+      },
+      funEditData(currentId){
+        this.$put(`/api/articles/${currentId}`,this.form)
+        .then((response) => {
+          let {status,message} = response;
+          if(status){
+            this.$message(message);
+            this.routerPath();
+          }
+        })
+      },
+      funCreateData(){
         this.$post('/api/articles',this.form)
         .then((response) => {
-          console.log(response)
+          let {status,message} = response;
+          if(status){
+            this.$message(message);
+            this.routerPath();
+          }
         })
       },
       beforeUploadVideo(file) {
@@ -130,6 +163,12 @@ import editors from '../../components/edit.vue';
               this.$message.error('视频上传失败，请重新上传！');
           }
       },
+      routerPath(){
+        this.$router.push({
+          path: '/articleText/list', 
+          query: {}
+        });
+      }
     },
     components:{
       editors

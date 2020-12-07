@@ -10,7 +10,7 @@ import VueCookies from 'vue-cookies'
 import echarts from 'echarts'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import {post,fetch,patch,put} from './utils/http'
+import {post,fetch,patch,put,del} from './utils/http'
 Vue.use(VueAxios,axios);
 //定义全局变量
 Vue.use(Element, { size: 'small' })
@@ -20,6 +20,7 @@ Vue.prototype.$post=post;
 Vue.prototype.$fetch=fetch;
 Vue.prototype.$patch=patch;
 Vue.prototype.$put=put;
+Vue.prototype.$del=del;
 
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
