@@ -84,7 +84,9 @@
           <template slot-scope="scope">
             <el-button type="text" size="small">
             <router-link :to="{path:`/articleText/details/${scope.row.id}`}">编辑</router-link>
-            <span @click="deleteText(scope.row.id)">删除</span>
+            <el-popconfirm title="这是一段内容确定删除吗？" @confirm="deleteText(scope.row.id)">
+              <span slot="reference">删除</span>
+            </el-popconfirm>
             </el-button>
           </template>
         </el-table-column>
