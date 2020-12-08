@@ -2,15 +2,14 @@
   <div>
     <div class="G-col-main">
       <el-row :gutter="20">
-        <el-col :span="4"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
-        <el-col :span="4"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
-        <el-col :span="4">
-          <el-button type="primary">主要按钮</el-button>
-          <el-button type="primary">主要按钮</el-button>
+        <el-col :span="5"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
+        <el-col :span="5"><el-input v-model="input" placeholder="请输入内容"></el-input></el-col>
+        <el-col :span="12">
+          <el-button type="primary">搜索</el-button>
         </el-col>
       </el-row>
     </div>
-    <div class="G-col-main G-M-top-10">
+    <div class="G-col-main G-M-top-10 G-content-main">
       <el-row>
           <el-button type="primary"><router-link :to="{path:'/articleText/details/0'}">创建文章</router-link></el-button>
          <el-button type="success">数据详情</el-button>
@@ -19,7 +18,6 @@
         class="G-M-top-15"
         :data="tableData"
         border
-        height="600px"
         style="width: 100%">
         <el-table-column
           prop="id"
@@ -84,7 +82,7 @@
           <template slot-scope="scope">
             <el-button type="text" size="small">
             <router-link :to="{path:`/articleText/details/${scope.row.id}`}">编辑</router-link>
-            <el-popconfirm title="这是一段内容确定删除吗？" @confirm="deleteText(scope.row.id)">
+            <el-popconfirm title="手别抖!看清楚." @confirm="deleteText(scope.row.id)">
               <span slot="reference">删除</span>
             </el-popconfirm>
             </el-button>

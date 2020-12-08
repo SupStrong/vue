@@ -14,11 +14,6 @@ import UserList from '@/page/User/list'
 // 保护机构
 import OrganizationList from '@/page/Organization/list'
 import OrganizationDetails from '@/page/Organization/details'
-import one from '@/components/one' // 直属下线代理查询
-import two from '@/components/two' // 直属下线代理设置
-import login from '@/components/login' // 直属下线代理设置
-import error from '@/components/404' // 直属下线代理设置
-import form from '@/components/form' // 直属下线代理设置
 Vue.use(Router)
 // 营销文章
 let article = [
@@ -82,7 +77,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: layouts,
+      component: ArticleTextList,
       redirect:'/articleText/list',
     },
     {
@@ -99,11 +94,6 @@ const router = new Router({
         // 保护机构
         ...Organization
       ]
-    },
-    {
-      path: '/404',
-      name: 'err',
-      component: error
     }
   ]
 })

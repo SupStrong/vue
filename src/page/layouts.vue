@@ -1,19 +1,10 @@
 <template>
   <section class="container" style="float:left">
     <!-- 根据menuOpen的值来判断是否使用menu-open样式 -->
-    <el-container>
-      <el-aside width="200px">
-        <menus></menus>
-      </el-aside>
-      <el-container class=" is-vertical">
-        <headers></headers>
-          <div class="main">
-            <router-view>
-            </router-view>
-          </div>
-       <!-- <foot></foot> -->
-      </el-container>
-    </el-container>
+    <div class="main">
+      <router-view>
+      </router-view>
+    </div>
     </section>
 </template>
 

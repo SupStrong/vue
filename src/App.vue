@@ -2,7 +2,16 @@
   <div id="app">
     <keep-alive> 
        <!-- 缓存组件，提高运行性能 -->
-      <router-view></router-view>
+    <el-container>
+      <el-aside width="200px">
+        <menus></menus>
+      </el-aside>
+      <el-container class=" is-vertical">
+        <headers></headers>
+          <router-view></router-view>
+       <!-- <foot></foot> -->
+      </el-container>
+    </el-container>
     </keep-alive>
   </div>
 </template>
@@ -11,8 +20,16 @@
 import Vue from 'vue'
 import { Button } from 'element-ui'
 import App from './App.vue'
+import headers from './components/assets/headers';
+import foot from './components/assets/foot';
+import menus from './components/assets/menus';
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    headers,
+    foot,
+    menus
+  },
 }
 </script>
 

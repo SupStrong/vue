@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="page-main">
     <el-pagination
+      style="margin-top:10px;"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page.sync="page"
@@ -37,3 +38,9 @@
     }
   }
 </script>
+<style>
+    .page-main{
+        display:flex;
+        justify-content:flex-end;
+    }
+</style>

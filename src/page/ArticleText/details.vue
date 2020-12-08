@@ -1,5 +1,5 @@
 <template>
-    <div class="G-col-main">
+    <div class="G-col-main G-content-main">
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="文章标题">
           <el-input  v-model="form.title"></el-input>
