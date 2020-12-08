@@ -1,6 +1,6 @@
 <template>
     <div class="G-col-main G-content-main">
-      <el-form ref="form" :model="form" label-width="80px">
+      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="文章标题">
           <el-input  v-model="form.title"></el-input>
         </el-form-item>
@@ -64,7 +64,7 @@
             <P class="text">请保证视频格式正确，且不超过10M</P>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">立即创建</el-button>
+          <el-button type="primary" @click="onSubmit('form')">立即创建</el-button>
           <el-button><router-link to="/articleText/list">返回</router-link></el-button>
         </el-form-item>
       </el-form>
@@ -91,6 +91,30 @@ import editors from '../../components/edit.vue';
           status:false,
           tags:[],
           textarea:'',
+        },
+        rules: {
+          name: [
+            { required: true, message: '请输入活动名称', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          region: [
+            { required: true, message: '请选择活动区域', trigger: 'change' }
+          ],
+          date1: [
+            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+          ],
+          date2: [
+            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+          ],
+          type: [
+            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+          ],
+          resource: [
+            { required: true, message: '请选择活动资源', trigger: 'change' }
+          ],
+          desc: [
+            { required: true, message: '请填写活动形式', trigger: 'blur' }
+          ]
         }
       }
     },
@@ -113,9 +137,15 @@ import editors from '../../components/edit.vue';
             }
           })
       },
-      onSubmit() {
-        let currentId = this.$route.params.id;
-        currentId != 0 ?  this.funEditData(currentId) : this.funCreateData();
+      onSubmit(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            let currentId = this.$route.params.id;
+            currentId != 0 ?  this.funEditData(currentId) : this.funCreateData();
+          } else {
+            return false;
+          }
+        });
       },
       funEditData(currentId){
         this.$put(`/api/articles/${currentId}`,this.form)
